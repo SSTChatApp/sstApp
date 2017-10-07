@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        android:id="@+id/CommentUserImage"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Name"
+        android:textSize="22sp"
+        android:textStyle="bold|italic"
+        android:layout_toEndOf="@id/CommentUserImage"
+        android:id="@+id/CommentUserName"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Comment"
+        android:textSize="18sp"
+        android:layout_below="@+id/CommentUserName"
+        android:layout_toEndOf="@+id/CommentUserImage"
+
+        android:id="@+id/CommentValue"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="28/11/1995"
+        android:layout_below="@+id/CommentUserImage"
+        android:id="@+id/CommentDate"/>
+
+</RelativeLayout>

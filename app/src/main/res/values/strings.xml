@@ -1,0 +1,117 @@
+<resources>
+    <string name="app_name">ChatApp</string>
+    <!-- Activation File       -->
+    <string name="Activation_File">com.example.mine.mychatapplication.Activation_File</string>
+    <!--  File Directory Name -->
+    <string name="uploadFileChatApp">ChatApp</string>
+    <!--       Login Fragment                   -->
+    <string name="Password_Code">Password</string>
+    <string name="Wrong_Sign_in">Wrong Email Address or Password</string>
+    <string name="Login_Button_Name">Login</string>
+    <string name="User_name">Email Address</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_from_post_fragment">Hello From Post Fragment</string>
+    <!--        Database Directories                   -->
+    <string name="UsersProfileID">UsersProfileID</string>
+    <string name="Groups">Groups</string>
+    <string name="GroupsData">GroupsData</string>
+    <string name="UsersProfile">UsersProfile</string>
+    <string name="Sections">Sections</string>
+    <string name="SectionsData">SectionsData</string>
+    <string name="Departments">Departments</string>
+    <string name="DepartmentsData">DepartmentsData</string>
+    <string name="Divisions">Divisions</string>
+    <string name="DivisionsData">DivisionsData</string>
+    <string name="Positions">Positions</string>
+    <string name="PositionsData">PositionsData</string>
+    <string name="JobLevels">JobLevels</string>
+    <string name="JobLevelsData">JobLevelsData</string>
+    <!--             Excel Files                 -->
+    <string name="EmployeesFile">Employees</string>
+    <string name="DivisionsFile">Divisions</string>
+    <string name="DepartmentsFile">Departments</string>
+    <string name="SectionsFile">Sections</string>
+    <string name="JobsLevelsFile">Jobs_Levels</string>
+    <string name="PositionsFile">Positions</string>
+    <string name="SexFile">Sex</string>
+    <!--        UpLoad Activity                  -->
+    <array name="UpLoadItems">
+        <item>Divisions Data</item>
+        <item>Departments Data</item>
+        <item>Sections Data</item>
+        <item>Jobs Levels Data</item>
+        <item>Positions Data</item>
+        <item>Employees Data</item>
+    </array>
+    <string name="succeeded">Succeeded</string>
+    <string name="failed">Failed</string>
+    <string name="upLoadSucceeded">The file uploaded successfully</string>
+    <string name="Wait_ms">PLease wait for few seconds </string>
+    <string name="Wait">Wait </string>
+    <string name="upLoadFailed">The file failed to upload</string>
+    <!--       Create Files  Activity                  -->
+    <string name="setupFinished_ms">The App is fully functional now</string>
+    <string name="finished">Finished</string>
+    <string name="setupFailed">Setup Failed:(</string>
+    <string name="setupFailed_ms">Setup failed please try reinstalling the App</string>
+    <string name="setupWait">Setup App</string>
+    <string name="setupWait_ms">The App is setting up please wait for few seconds and don\'t close it until receiving confirmation massage.</string>
+    <array name="EmployeesTable">
+        <item>Name</item>
+        <item>Sex</item>
+        <item>Birth Date</item>
+        <item>Birth Destination</item>
+        <item>IdNumber</item>
+        <item>Department Code</item>
+        <item>Section Code</item>
+        <item>Position Code</item>
+        <item>Hiring Date</item>
+    </array>
+
+    <array name="DivisionsTable">
+        <item>Division Code</item>
+        <item>Name</item>
+        <item>Closed</item>
+    </array>
+
+    <array name="DepartmentsTable">
+        <item>Department Code</item>
+        <item>Name</item>
+        <item>Division Code</item>
+        <item>Closed</item>
+    </array>
+
+    <array name="SectionsTable">
+        <item>Section Code</item>
+        <item>Name</item>
+        <item>Department Code</item>
+        <item>Manager</item>
+        <item>Closed</item>
+    </array>
+
+    <array name="PositionsTable">
+        <item>Position Code</item>
+        <item>Name</item>
+        <item>Level Code</item>
+        <item>Closed</item>
+    </array>
+
+    <array name="JobLevelTable">
+        <item>Level Code</item>
+        <item>Name</item>
+    </array>
+    <!-- All Users Chat Fragment  -->
+    <string name="notFound">NotFound:(</string>
+    <!-- Chat Fragment  -->
+    <string name="sign_out">Sign Out</string>
+    <string name="send_button_label">Send</string>
+    <string name="messageEditTextHint"> Type a message</string>
+    <!--  Check Phone Nnmber Activity     -->
+    <string name="Activate">Activate</string>
+    <string name="Send">Send Activation Code</string>
+    <string name="IDHnt">National ID Number</string>
+    <!--     Blank Activity   -->
+    <string name="SimCardChanged">Sim Card Changed</string>
+    <string name="alertDialogButton">Got It</string>
+</resources>

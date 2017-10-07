@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ListOfComments"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/relativeLayout"
+        >
+    </ListView>
+
+    <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+       <EditText
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:hint="Write Your Comment"
+           android:background="@android:color/darker_gray"
+           android:id="@+id/editText"
+           android:layout_weight="1"
+           android:text=""
+           >
+       </EditText>
+       <ImageButton
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@android:drawable/ic_input_add"
+           android:id="@+id/AddCommentButton"
+           />
+      </LinearLayout>
+
+
+
+</RelativeLayout>
