@@ -16,22 +16,21 @@
         android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        tools:text="Name" />
+        tools:text="Name"
+        android:textSize="12sp"/>
 
     <TextView
         android:id="@+id/messageTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        tools:text="Message" />
+        tools:text="Message"
+        android:textSize="20sp"
+        android:textColor="#000"/>
 
     <TextView
         android:id="@+id/sendTimeTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:textSize="12sp"/>
 
 </LinearLayout>

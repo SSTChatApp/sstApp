@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="@android:dimen/notification_large_icon_height"
     android:id="@+id/OneUser"
     android:layout_marginBottom="12dp"
-    android:background="@android:color/holo_green_light"
     tools:ignore="Overdraw">
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/profile"
         android:id="@+id/UserImage"/>
 
     <TextView
@@ -18,12 +17,21 @@
         android:layout_height="wrap_content"
         android:text="User Name"
         android:id="@+id/Name"
+        android:textColor="#000"
         android:textSize="23sp"
         android:layout_marginLeft="41dp"
         android:layout_marginTop="12dp"
         android:layout_alignRight="@+id/UserImage"
         android:layout_alignParentRight="true"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_centerVertical="true"/>
+    <View
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:background="@color/color_GRAY"
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true" />
 
 
 

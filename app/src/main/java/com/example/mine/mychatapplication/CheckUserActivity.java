@@ -33,6 +33,7 @@ public class CheckUserActivity extends AppCompatActivity {
 
     private EditText nationalId;
     private Button activate;
+    private Toast toast=null;
     private static final String SIM_CARD_SERIAL_NUMBER = "SimCardSerialNumber";
     private static final String NATIONAL_ID = "NationalID";
     private static final String FIRST_USE = "FirstUse";
@@ -100,9 +101,20 @@ public class CheckUserActivity extends AppCompatActivity {
 
         } else {
 
-            Intent intent = new Intent(getBaseContext(), MainUserPage.class);
-            startActivity(intent);
-            finish();
+            tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+
+            final String nationalIdNumber = activation_file.getString(NATIONAL_ID, "");
+
+            final String SimCardSerialNumber = tm.getSimSerialNumber();
+
+
+            checkUser(SimCardSerialNumber,nationalIdNumber);
+
+
+
+
+
+
         }
 
 
@@ -111,39 +123,49 @@ public class CheckUserActivity extends AppCompatActivity {
 
     public void setActivation(View view) {
 
-
         final String simCardSerialNumber = tm.getSimSerialNumber();
         final String nationalIdNumber = nationalId.getText().toString().trim();
 
-        databaseReference.child(getString(R.string.UsersProfile)).child(nationalIdNumber)
-                .child(SIM_CARD_SERIAL_NUMBER).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (!dataSnapshot.exists()) {
+        if(!simCardSerialNumber.trim().isEmpty()){
 
-                    databaseReference.child(getString(R.string.UsersProfile)).child(nationalIdNumber)
-                            .child(SIM_CARD_SERIAL_NUMBER).setValue(simCardSerialNumber);
 
-                   // activation_file.edit().putString(SIM_CARD_SERIAL_NUMBER, simCardSerialNumber).apply();
-                    Toast.makeText(getBaseContext(), "Activation Done :)", Toast.LENGTH_SHORT).show();
+            databaseReference.child(getString(R.string.UsersProfile))
+                    .child(nationalIdNumber)
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (!dataSnapshot.exists()) {
 
-                } else {
-                   // activation_file.edit().putString(SIM_CARD_SERIAL_NUMBER, dataSnapshot.getValue().toString()).apply();
+                        //toast this id is wrong
+                        if(toast!=null)
+                            toast.cancel();
+                        toast=Toast.makeText(getApplicationContext(),"The ID you entered is wrong", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                    else{
+                        Log.d("ahmed", "onDataChange: "+!dataSnapshot.exists());
+                        saveLoginData(simCardSerialNumber,nationalIdNumber);
+                    }
+
                 }
-                activation_file.edit().putString(NATIONAL_ID, nationalIdNumber).apply();
-                activation_file.edit().putString(FIRST_USE, "Flase").apply();
-                Intent intent = new Intent(getBaseContext(), MainUserPage.class);
-                intent.putExtra(NATIONAL_ID, nationalIdNumber);
-                startActivity(intent);
-                finish();
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-                Toast.makeText(getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
+                    Toast.makeText(getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+
+
+        }
+        else{
+            //toast there is no sim card to use
+            if(toast!=null)
+                toast.cancel();
+            toast=Toast.makeText(getApplicationContext(),"There is no SIM card in This Phone to read", Toast.LENGTH_LONG);
+            toast.show();
+        }
+
 
 
     }
@@ -181,7 +203,78 @@ public class CheckUserActivity extends AppCompatActivity {
 
 
     }
+    private void saveLoginData(final String simCardSerialNumber,final String nationalIdNumber){
 
+
+
+        databaseReference.child(getString(R.string.UsersProfile)).child(nationalIdNumber)
+                .child(SIM_CARD_SERIAL_NUMBER).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()) {
+
+                    databaseReference.child(getString(R.string.UsersProfile)).child(nationalIdNumber)
+                            .child(SIM_CARD_SERIAL_NUMBER).setValue(simCardSerialNumber);
+
+
+                }
+
+
+                activation_file.edit().putString(NATIONAL_ID, nationalIdNumber).apply();
+
+                activation_file.edit().putString(FIRST_USE, "Flase").apply();
+
+               checkUser(simCardSerialNumber,nationalIdNumber);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                Toast.makeText(getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+    }
+
+    private  void checkUser(final String SimCardSerialNumber,final String nationalIdNumber){
+
+        databaseReference.child(getString(R.string.UsersProfile)).child(nationalIdNumber)
+                .child(SIM_CARD_SERIAL_NUMBER).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Intent intent;
+                if (!dataSnapshot.exists() || !dataSnapshot.getValue().toString().equals(SimCardSerialNumber)) {
+
+
+                    if(toast!=null)
+                        toast.cancel();
+                    toast=Toast.makeText(getApplicationContext(), "Sim Card Has Changed", Toast.LENGTH_LONG);
+                    toast.show();
+
+
+
+                }
+                else{
+
+                    intent = new Intent(getBaseContext(), MainUserPage.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                Toast.makeText(getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+    }
 
 }
 
